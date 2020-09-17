@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectBD = require('./config/db');
 //const logger = require('./middleware/logger');
+const error = require('./middleware/error');
 const morgan = require('morgan');
 const colors = require('colors');
 
@@ -9,6 +10,8 @@ const colors = require('colors');
 dotenv.config({ path: './config/config.env' });
 connectBD();
 const bootcamps = require('./router/bootcamps');
+const errorHandler = require('./middleware/error');
+
 const app = express();
 //app.use(logger);
 
@@ -20,8 +23,10 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use('/api/v1/bootcamps', bootcamps);
-const PORT = process.env.PORT || 5000;
 
+app.use(errorHandler);
+
+const PORT = process.env.PORT || 5000;
 const server = app.listen(
   PORT,
   console.log(
