@@ -7,4 +7,4 @@ npm run dev
 # Run in production mode
 npm start
 
-Thank you @bradtraversy for being my amazing online instructor.
+# Thank you BRAD TRAVERSY for being my amazing online instructor.
