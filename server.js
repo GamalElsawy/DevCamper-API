@@ -10,6 +10,8 @@ const colors = require('colors');
 dotenv.config({ path: './config/config.env' });
 connectBD();
 const bootcamps = require('./router/bootcamps');
+const courses = require('./router/courses');
+
 const errorHandler = require('./middleware/error');
 
 const app = express();
@@ -22,7 +24,9 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+// Mount routers
 app.use('/api/v1/bootcamps', bootcamps);
+app.use('/api/v1/courses', courses);
 
 app.use(errorHandler);
 
