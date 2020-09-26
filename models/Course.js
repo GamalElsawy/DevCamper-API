@@ -46,4 +46,5 @@ Chapter 6.1 >> Session 11
 
 
  */
+
 module.exports = mongoose.model('Course', courseSchema);
