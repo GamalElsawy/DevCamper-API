@@ -5,14 +5,18 @@ const connectBD = require('./config/db');
 //const logger = require('./middleware/logger');
 const error = require('./middleware/error');
 const fileupload = require('express-fileupload');
+const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const colors = require('colors');
 
 // Load env variables
 dotenv.config({ path: './config/config.env' });
 connectBD();
+
+// Route files
 const bootcamps = require('./router/bootcamps');
 const courses = require('./router/courses');
+const auth = require('./router/auth');
 
 const errorHandler = require('./middleware/error');
 const fileUpload = require('express-fileupload');
@@ -23,12 +27,15 @@ const app = express();
 // Body parser
 app.use(express.json());
 
+// Cookie Parser
+app.use(cookieParser());
+
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
 // File Uploader
-app.use(fileUpload());
+app.use(fileUpload()); 
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
@@ -36,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Mount routers
 app.use('/api/v1/bootcamps', bootcamps);
 app.use('/api/v1/courses', courses);
+app.use('/api/v1/auth', auth);
 
 app.use(errorHandler);
 
