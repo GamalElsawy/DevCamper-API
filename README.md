@@ -1,10 +1,20 @@
 # DevCamper-API
-Backend API for DevCamper application, which is a bootcamp directory website.
+Backend API for DevCamper application, which is a whole learning system includes bootcamps, courses, reviews and user authentication.
 
+# How to use?
+ - RUN npm install
+ 
 # Run in development mode
-npm run dev
+ - npm run dev
 
 # Run in production mode
-npm start
+ - npm start
 
-# Thank you BRAD TRAVERSY for being my amazing online instructor.
+# Destroy all data
+ - node seeder -d
+
+# Import all data
+ - node seeder -i
+
+Thank you #BRAD TRAVERSY
+ for being my amazing online instructor.
