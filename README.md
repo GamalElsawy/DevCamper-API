@@ -16,6 +16,4 @@ Backend API for DevCamper application, which is a whole learning system includes
 # Import all data
  - node seeder -i
 
-Thank you 
-# BRAD TRAVERSY
- for being my amazing online instructor.
+# Thank you BRAD TRAVERSY for being my amazing online instructor.
